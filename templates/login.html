@@ -1,0 +1,67 @@
+{% extends 'base.html' %} {% block title %} LOGIN {% endblock title %} 
+{% block body %}
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 jumbotron">
+      <h1 class="text-center bg-primary text-white">Login</h1>
+
+      <br />
+      {% with messages=get_flashed_messages(with_categories=true) %} {% if messages %} {% for category, message in messages %}
+
+      <div
+        class="alert alert-{{category}} alert-dismissible fade show"
+        role="alert">
+        {{message}}
+
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+          aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      {% endfor %} {% endif %} {% endwith %}
+
+      <form action="/login" method="POST">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email Address</label>
+          <input
+            type="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            name="email"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="Password1">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="Password1"
+            placeholder="Password"
+            name="password"
+            required
+          />
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-sm btn-block">
+          Login
+        </button>
+      </form>
+
+      <br />
+      Not a User <a href="/signup">Sign Up</a>
+    </div>
+
+    <div class="container"></div>
+    <div class="col-md-4"></div>
+  </div>
+</div>
+
+{% endblock body %}
